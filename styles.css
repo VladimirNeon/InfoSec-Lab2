@@ -1,0 +1,970 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #e8e8e8;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #b8b8b8;
+    opacity: 0.9;
+}
+
+main {
+    display: grid;
+    gap: 2rem;
+}
+
+.input-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.key-matrix-section,
+.text-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h2 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.matrix-size-selector {
+    margin-bottom: 1rem;
+}
+
+.matrix-size-selector label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #b8b8b8;
+    font-weight: 500;
+}
+
+.styled-input,
+input[type="number"] {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    width: 100px;
+    text-align: center;
+    transition: all 0.3s ease;
+    /* Hide number input arrows */
+    -moz-appearance: textfield;
+}
+
+.styled-input::-webkit-outer-spin-button,
+.styled-input::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.styled-input:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: #4a9eff;
+    box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+}
+
+.styled-text-input {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.styled-text-input:focus {
+    outline: none;
+    border-color: #4a9eff;
+    box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+}
+
+.styled-text-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+select {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: 100%;
+}
+
+select:focus {
+    outline: none;
+    border-color: #4a9eff;
+    box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.2);
+}
+
+.matrix-input {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+}
+
+.matrix-row {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.matrix-input input {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 0.75rem;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 65px;
+    height: 50px;
+    transition: all 0.3s ease;
+    /* Hide number input arrows */
+    -moz-appearance: textfield;
+}
+
+.matrix-input input::-webkit-outer-spin-button,
+.matrix-input input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.matrix-input input:focus {
+    outline: none;
+    border-color: #4a9eff;
+    box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.matrix-input input:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+textarea {
+    width: 100%;
+    min-height: 120px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 1rem;
+    resize: vertical;
+    font-family: inherit;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #4a9eff;
+    box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.2);
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.btn {
+    padding: 0.875rem 1.75rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: none; /* Remove uppercase */
+    letter-spacing: 0.3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #4a9eff, #007bff);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(74, 158, 255, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #3d8bff, #0056b3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(74, 158, 255, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(74, 158, 255, 0.3);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:active {
+    transform: translateY(-1px);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.btn:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.output-text {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 60px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    word-break: break-all;
+}
+
+.steps-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.steps-container {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 200px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.step {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 4px solid #4a9eff;
+}
+
+.step h3 {
+    color: #4a9eff;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.step-content {
+    color: #e8e8e8;
+    font-family: 'Courier New', monospace;
+    line-height: 1.8;
+}
+
+.matrix-display {
+    display: inline-block;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+}
+
+.vector-display {
+    display: inline-block;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+}
+
+.calculation {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+    font-family: 'Courier New', monospace;
+}
+
+.key-validation {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.valid-key {
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.1);
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.invalid-key {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.1);
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.visual-step {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border-left: 4px solid #4a9eff;
+    backdrop-filter: blur(5px);
+}
+
+.step-title {
+    color: #4a9eff;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.step-content {
+    color: #e8e8e8;
+    line-height: 1.8;
+}
+
+.matrix-display-container {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.matrix-container {
+    display: inline-block;
+    margin: 0.5rem;
+}
+
+.matrix {
+    display: inline-block;
+    border: 2px solid #4a9eff;
+    border-radius: 8px;
+    padding: 1rem;
+    background: rgba(74, 158, 255, 0.1);
+    position: relative;
+}
+
+.matrix::before,
+.matrix::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #4a9eff;
+}
+
+.matrix::before {
+    left: -2px;
+}
+
+.matrix::after {
+    right: -2px;
+}
+
+.matrix-row {
+    display: flex;
+    justify-content: center;
+    margin: 0.25rem 0;
+}
+
+.matrix-cell {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 0 0.25rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    font-weight: 600;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.vector-container {
+    display: inline-block;
+    margin: 0.5rem;
+}
+
+.vector {
+    display: inline-block;
+    border: 2px solid #10b981;
+    border-radius: 8px;
+    padding: 0.5rem;
+    background: rgba(16, 185, 129, 0.1);
+    position: relative;
+}
+
+.vector::before,
+.vector::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #10b981;
+}
+
+.vector::before {
+    top: -2px;
+}
+
+.vector::after {
+    bottom: -2px;
+}
+
+.vector-cell {
+    display: block;
+    width: 40px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    margin: 0.25rem 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    font-weight: 600;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.matrix-operation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1.5rem 0;
+    gap: 1rem;
+}
+
+.operation-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.mod-operation {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.operator {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4a9eff;
+    margin: 0 0.5rem;
+}
+
+.mod-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #f59e0b;
+    margin: 0 0.5rem;
+}
+
+.calculations {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.calculations h5 {
+    color: #4a9eff;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.calculation-step {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #e8e8e8;
+}
+
+.text-conversion {
+    margin: 1rem 0;
+}
+
+.text-conversion h4 {
+    color: #4a9eff;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.letter-numbers {
+    margin-bottom: 1.5rem;
+}
+
+.letter-conversion {
+    display: inline-block;
+    margin: 0.25rem;
+    padding: 0.5rem;
+    background: rgba(168, 85, 247, 0.2);
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.vector-groups {
+    margin-top: 1rem;
+}
+
+.vector-group {
+    display: flex;
+    align-items: center;
+    margin: 0.75rem 0;
+    gap: 1rem;
+}
+
+.block-label {
+    font-weight: 600;
+    color: #10b981;
+    min-width: 80px;
+}
+
+.matrix-inverse {
+    display: grid;
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+.matrix-inverse h4 {
+    color: #4a9eff;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.determinant-calc {
+    padding: 1rem;
+    background: rgba(245, 158, 11, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.determinant-calc p {
+    margin: 0.25rem 0;
+    font-family: 'Courier New', monospace;
+    color: #fbbf24;
+}
+
+.result-text {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 8px;
+    border: 2px solid #10b981;
+    margin: 1rem 0;
+}
+
+.result-text strong {
+    color: #10b981;
+    font-size: 1.2rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .input-section {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .button-group {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .input-method-tabs {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .tab-button {
+        text-align: center;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .matrix-input {
+        gap: 0.5rem;
+    }
+
+    .matrix-input input {
+        width: 55px;
+        height: 45px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .styled-input {
+        width: 80px;
+    }
+
+    .btn {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.9rem;
+    }
+
+    .matrix-input input {
+        width: 50px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+}
+
+/* New styles for key input options */
+.key-input-options {
+    margin-bottom: 1.5rem;
+}
+
+.input-method-tabs {
+    display: flex;
+    margin-bottom: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 0.25rem;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.tab-button.active {
+    background: linear-gradient(135deg, #4a9eff, #007bff);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(74, 158, 255, 0.3);
+}
+
+.tab-button:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.key-input-panel {
+    display: none;
+}
+
+.key-input-panel.active {
+    display: block;
+}
+
+.text-key-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.text-key-group label {
+    color: #b8b8b8;
+    font-weight: 500;
+}
+
+.info-message {
+    color: #60a5fa;
+    background: rgba(96, 165, 250, 0.1);
+    padding: 0.75rem;
+    border-radius: 6px;
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    font-weight: 500;
+}
+
+.success-message {
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    font-weight: 500;
+}
+
+.key-suggestions {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(245, 158, 11, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.key-suggestions h4 {
+    color: #fbbf24;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.suggestion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.suggestion-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.suggestion-btn {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    text-align: center;
+}
+
+.suggestion-btn:hover {
+    background: linear-gradient(135deg, #059669, #047857);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.suggestion-btn:active {
+    transform: translateY(0);
+}
+
+.suggestion-desc {
+    color: #d1d5db;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.no-suggestions {
+    color: #f87171;
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+}
+
+.matrix-preview {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.matrix-preview h5 {
+    color: #4ade80;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.matrix-preview .matrix {
+    transform: scale(0.8);
+    margin: 0;
+}
+
+.matrix-preview .matrix-cell {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 0.9rem;
+}
+
+/* Enhanced responsive design for suggestions */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .input-section {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .input-method-tabs {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .tab-button {
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .matrix-input {
+        gap: 0.5rem;
+    }
+
+    .matrix-input input {
+        width: 55px;
+        height: 45px;
+        font-size: 1rem;
+    }
+
+    .suggestion-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .suggestion-btn {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .suggestion-desc {
+        font-size: 0.8rem;
+    }
+
+    .matrix-preview .matrix {
+        transform: scale(0.7);
+    }
+}
+
+@media (max-width: 480px) {
+    .styled-input {
+        width: 80px;
+    }
+
+    .btn {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.9rem;
+    }
+
+    .matrix-input input {
+        width: 50px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+
+    .key-suggestions {
+        padding: 0.75rem;
+    }
+
+    .suggestion-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .matrix-preview .matrix {
+        transform: scale(0.6);
+    }
+}
